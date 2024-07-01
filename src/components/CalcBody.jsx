@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function CalcBody(props) {
   const [screenText, setScreenText] = useState("");
-  let butonsArray = ["C≠%/", "789x", "456-", "123+", ".0<="];
+  let butonsArray = ["C≠%/", "789*", "456-", "123+", ".0<="];
 
   let textScreen = "0";
 
@@ -18,9 +18,13 @@ export default function CalcBody(props) {
   };
 
   const clearScreen = () => {
-    textScreen = "0";
+    textScreen = "";
     setScreenText(textScreen);
   };
+  const calculateEval = ()=> {
+	setScreenText(eval(screenText));
+	console.log(eval(screenText));
+  }
 
   return (
     <div className="calc-body">
@@ -29,26 +33,31 @@ export default function CalcBody(props) {
         buttons={butonsArray[0]}
         onClick={updateDisplay}
         clear={clearScreen}
+		calc={calculateEval}
       />
       <ButtonRow
         buttons={butonsArray[1]}
         onClick={updateDisplay}
         clear={clearScreen}
+		calc={calculateEval}
       />
       <ButtonRow
         buttons={butonsArray[2]}
         onClick={updateDisplay}
         clear={clearScreen}
+		calc={calculateEval}
       />
       <ButtonRow
         buttons={butonsArray[3]}
         onClick={updateDisplay}
         clear={clearScreen}
+		calc={calculateEval}
       />
       <ButtonRow
         buttons={butonsArray[4]}
         onClick={updateDisplay}
         clear={clearScreen}
+		calc={calculateEval}
       />
       {/* <button onClick={()=>{updateDisplay("Text")}} >Click me</button> */}
     </div>
