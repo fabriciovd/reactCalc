@@ -8,8 +8,9 @@ export default function CalcBody(props) {
 
   let textScreen = "0";
 
-  function click(parameters) {
-    console.log("Clicked");
+  function deleteChar(parameters) {
+	setScreenText(screenText.substring(0,screenText.length-1))
+	console.log(screenText.substring(0,screenText.length-1));
   }
 
   const updateDisplay = (text) => {
@@ -22,42 +23,41 @@ export default function CalcBody(props) {
     setScreenText(textScreen);
   };
   const calculateEval = ()=> {
-	setScreenText(eval(screenText));
-	console.log(eval(screenText));
+	let calc = eval(screenText)
+	textScreen = calc;
+	setScreenText(calc);
+	console.log(calc);
   }
 
   return (
     <div className="calc-body">
-      <CalcScreen text={screenText} />
+      <CalcScreen text={screenText} history={textScreen} />
       <ButtonRow
         buttons={butonsArray[0]}
         onClick={updateDisplay}
         clear={clearScreen}
-		calc={calculateEval}
       />
       <ButtonRow
         buttons={butonsArray[1]}
         onClick={updateDisplay}
         clear={clearScreen}
-		calc={calculateEval}
       />
       <ButtonRow
         buttons={butonsArray[2]}
         onClick={updateDisplay}
         clear={clearScreen}
-		calc={calculateEval}
       />
       <ButtonRow
         buttons={butonsArray[3]}
         onClick={updateDisplay}
         clear={clearScreen}
-		calc={calculateEval}
       />
       <ButtonRow
         buttons={butonsArray[4]}
         onClick={updateDisplay}
         clear={clearScreen}
 		calc={calculateEval}
+		delete={deleteChar}
       />
       {/* <button onClick={()=>{updateDisplay("Text")}} >Click me</button> */}
     </div>
