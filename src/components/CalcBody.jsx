@@ -4,12 +4,13 @@ import { useState } from "react";
 
 export default function CalcBody(props) {
   const [screenText, setScreenText] = useState("");
-  let butonsArray = ["C≠%/", "789*", "456-", "123+", ".0<="];
+  let butonsArray = ["C  /", "789*", "456-", "123+", ".0<="];
 
   let textScreen = "0";
 
-  function deleteChar(parameters) {
-	setScreenText(screenText.substring(0,screenText.length-1))
+  function deleteChar() {
+	textScreen = setScreenText(screenText.substring(0,screenText.length-1))
+	
 	console.log(screenText.substring(0,screenText.length-1));
   }
 
